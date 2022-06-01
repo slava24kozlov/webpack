@@ -1,0 +1,22 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "this is test project with webpack",
+  "main": "index.js ",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "html",
+    "css",
+    "js"
+  ],
+  "author": "Slava Kozlov",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
