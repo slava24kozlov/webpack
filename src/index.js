@@ -1,3 +1,5 @@
+import "./index.css";
+
 const root = document.getElementById('root');
 const buttonEnter = document.createElement('button');
 const buttonChange = document.createElement('button');

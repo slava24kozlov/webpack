@@ -32,21 +32,34 @@ module.exports = {
     }),
     // Generates an HTML file from a template
     new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, './src/template.html'),
-    filename: "index.html",
-    title: 'Webpack App',
-    favicon: path.resolve(__dirname, './src/image/favicon.png'),
-  })
+      template: path.resolve(__dirname, './src/template.html'),
+      filename: "index.html",
+      title: 'Webpack App',
+      favicon: path.resolve(__dirname, './src/image/favicon.png'),
+    })
   ],
 
+  //How the different types of modules will be treated
   module: {
     rules: [
       // JavaScript: Use Babel to transpile JavaScript files
-      { test: /\.js$/, use: ['babel-loader'] },
+      {test: /\.js$/, use: ['babel-loader']},
       // Images: Copy image files to build folder
-      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
+      {test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource'},
       // Fonts and SVGs: Inline files
-      { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+      {test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline'},
+      //CSS styles
+      {
+        test: /\.(sass|scss|css)$/,
+        //applying styles to DOM elements
+        use: ['style-loader',
+          {
+            //loading styles
+            loader: 'css-loader',
+            options: {sourceMap: true, importLoaders: 1, modules: false}
+          }
+        ]
+      }
     ],
   },
 
