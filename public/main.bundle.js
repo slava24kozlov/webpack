@@ -1,1 +1,0 @@
-(()=>{const e=document.getElementById("root"),n=document.createElement("div");n.innerHTML="<h1>Slava Kozlov</h1>",e.append(n)})();

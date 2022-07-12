@@ -8,7 +8,7 @@ module.exports = {
     main: './src/index.js',
   },
   output: {
-    path: path.resolve(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
     publicPath: '/',
   },
@@ -21,8 +21,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'dist'),
-          to: path.resolve(__dirname, 'public'),
+          from: path.resolve(__dirname, 'public'),
+          to: 'assets',
           globOptions: {
             ignore: ['*.DS_Store'],
           },
@@ -50,9 +50,12 @@ module.exports = {
     ],
   },
 
+  //Options change how modules are resolved
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.json'],
+    descriptionFiles: ['package.json'],
+    mainFiles: ['index'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
       assets: path.resolve(__dirname, 'public'),
