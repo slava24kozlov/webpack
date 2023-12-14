@@ -35,16 +35,31 @@ module.exports = {
       template: path.resolve(__dirname, './src/template.html'),
       filename: "index.html",
       title: 'Webpack App',
-      favicon: path.resolve(__dirname, './src/image/favicon.png'),
+      favicon: path.resolve(__dirname, './src/public/favicon.png'),
     })
   ],
 
   //How the different types of modules will be treated
   module: {
     rules: [
-      // JavaScript: Use Babel to transpile JavaScript files
-      {test: /\.js$/, use: ['babel-loader']},
-      // Images: Copy image files to build folder
+      // JavaScript: Use Babel to transpile React to JavaScript
+      {
+        test: /\.(jsx|js)$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                "targets": "defaults"
+              }],
+              '@babel/preset-react'
+            ]
+          }
+        }]
+      },
+      // Images: Copy public files to build folder
       {test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource'},
       // Fonts and SVGs: Inline files
       {test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline'},
