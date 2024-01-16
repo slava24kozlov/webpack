@@ -11,27 +11,15 @@ export const Switcher: FC<ISwitcherProps> = (props) => {
     const ref = useRef();
     const [checked, setChecked] = useState(defaultChecked);
 
-    const handleClick = () => {
-        console.log(ref.current)
+    const handleClick = (e: any) => {
+        console.log(e.currentTarget.checked);
         setChecked(true);
-        onCheckedChange(ref.current);
     }
 
     return (
-        <button type="button"
-                role="switch"
-                aria-checked={checked}
-                data-state={checked}
-                data-disabled={disabled ? '' : undefined}
-                disabled={disabled}
-                className={styles.root}
-                {...rest}
-                ref={ref}
-                onClick={handleClick}
-        >
-            <span className={styles.thumb} data-state={checked}
-                  data-disabled={disabled ? '' : undefined}
-                  ></span>
-        </button>
+        <label className={styles.switch}>
+            <input type="checkbox" ref={ref} onChange={handleClick}/>
+            <span className={styles.thumb}></span>
+        </label>
     )
 }
