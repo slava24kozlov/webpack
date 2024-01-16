@@ -1,0 +1,30 @@
+.root {
+    all: unset;
+    font-size: 1rem;
+    width: 3.75em;
+    height: 2.125em;
+    background-color: black;
+    border-radius: 9999px;
+    position: relative;
+}
+
+.root[data-state='checked'] {
+    background-color: rgba(0,0,0, 0.6);
+}
+
+.thumb {
+    display: block;
+    width: 1.75em;
+    height: 1.75em;
+    background-color: white;
+    border-radius: 9999px;
+    transition: transform 100ms;
+    transform: translateX(0.1875em);
+    will-change: transform;
+    box-sizing: border-box;
+    border: 0.0625em solid rgba(255,255,255, 0.25);
+}
+
+.thumb[data-state='checked'] {
+    transform: translateX(1.8125em);
+}
